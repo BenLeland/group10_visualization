@@ -15,6 +15,7 @@ const SKETCH_SCRIPT_BY_ID = {
     sk4: 'sketches/sketch4.js'
 };
 
+window.DEFAULT_SKETCH = 'sk1';
 // Default sketch selection logic:
 // 1) URL query `?tab=sk3` or `?tab=tab3` will select that tab on load
 // 2) or set `window.DEFAULT_SKETCH = 'sk2'` in the page before this script to choose a default
