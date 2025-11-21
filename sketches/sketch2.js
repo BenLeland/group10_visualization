@@ -1,6 +1,7 @@
 // Instance-mode sketch for tab 2
 registerSketch('sk2', function (p) {
   let timeTicks;
+  let tickDates;
   let bars;
   let events;
 
@@ -8,6 +9,8 @@ registerSketch('sk2', function (p) {
     p.createCanvas(p.windowWidth, p.windowHeight);
     timeTicks = [];
     populateTimeTicks();
+    tickDates = [];
+    populateDates();
     bars = [];
     populateBars();
     events = [];
@@ -60,6 +63,21 @@ registerSketch('sk2', function (p) {
     }
   }
 
+  function populateDates() {
+    let startYear = 2020;
+    let startMonth = 1;
+
+    for (let i = 0; i < timeTicks.length; i++) {
+      let month = (startMonth + i - 1) % 12 + 1;
+      let year = startYear + Math.floor((startMonth + i - 1) / 12);
+
+      const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      let label = monthNames[month - 1] + " " + year;
+
+      tickDates.push(label);
+    }
+  }
+
   function drawTimeTicks() {
     for (let i = 0; i < timeTicks.length; i++) {
       let tickX = timeTicks[i];
@@ -67,6 +85,16 @@ registerSketch('sk2', function (p) {
       p.stroke(255);
       p.strokeWeight(1);
       p.line(tickX, p.windowHeight / 2 - 10, tickX, p.windowHeight / 2 + 10);
+
+      p.push();
+      p.translate(tickX, p.windowHeight / 2 + 15);
+      p.rotate(p.HALF_PI);
+      p.noStroke();
+      p.fill(255);
+      p.textSize(10);
+      p.textAlign(p.LEFT, p.CENTER);
+      p.text(tickDates[i], 5, 0);
+      p.pop();
     }
   }
 
