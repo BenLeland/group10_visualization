@@ -4,8 +4,8 @@ registerSketch('sk1', function (p) {
   let font;
 
   p.preload = function() {
-    img = p.loadImage('./images/stock-background-image.jpg');
-    font = p.loadFont('./goldman-latin-400-normal.ttf');
+    img = p.loadImage('/images/stock-background-image.jpg');
+    font = p.loadFont('/resources/goldman-latin-400-normal.ttf');
   }
 
   p.setup = function() {

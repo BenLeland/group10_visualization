@@ -11,7 +11,7 @@ registerSketch('sk4', function (p) {
   };
 
   p.draw = function () {
-    p.background('#1e1e1e');
+    p.background('#414141');
 
     drawTitle();
     drawBars();
