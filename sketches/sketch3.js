@@ -5,9 +5,9 @@ registerSketch('sk3', function (p) {
   const CANVAS_HEIGHT = 600;
   
   // Bubble size range
-  const MIN_BUBBLE_SIZE = 60;
-  const MAX_BUBBLE_SIZE = 400;
-  const BASE_SIZE = 150; // Starting size for all bubbles
+  const MIN_BUBBLE_SIZE = 50;
+  const MAX_BUBBLE_SIZE = 350;
+  const BASE_SIZE = 120; // Starting size for all bubbles (reduced from 150)
   
   // Data structures
   let assets = {
@@ -193,7 +193,7 @@ registerSketch('sk3', function (p) {
   function positionBubbles() {
     const centerX = CANVAS_WIDTH / 2;
     const centerY = CANVAS_HEIGHT / 2 + 20; // Moved down to account for top UI
-    const radius = 150; // Adjusted to keep all bubbles within canvas bounds (max bubble = 400px / 2 = 200px)
+    const radius = 200; // Increased to spread bubbles out more and prevent overlap
     
     const keys = Object.keys(assets);
     const angleStep = p.TWO_PI / keys.length;
