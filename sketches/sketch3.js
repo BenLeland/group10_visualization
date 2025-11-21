@@ -192,8 +192,8 @@ registerSketch('sk3', function (p) {
   
   function positionBubbles() {
     const centerX = CANVAS_WIDTH / 2;
-    const centerY = CANVAS_HEIGHT / 2 - 30;
-    const radius = 180;
+    const centerY = CANVAS_HEIGHT / 2 + 20; // Moved down to account for top UI
+    const radius = 150; // Adjusted to keep all bubbles within canvas bounds (max bubble = 400px / 2 = 200px)
     
     const keys = Object.keys(assets);
     const angleStep = p.TWO_PI / keys.length;
@@ -229,9 +229,10 @@ registerSketch('sk3', function (p) {
         // Use daily percentage change directly
         const dailyChange = closestData.changePercent;
         
-        // Map daily change to size: -10% to +10% range
-        // Neutral (0%) = BASE_SIZE, positive grows, negative shrinks
-        const normalizedChange = (dailyChange + 10) / 20; // Map -10% to 0, +10% to 1
+        // Map daily change to size with more dramatic scaling: -5% to +5% range
+        // This makes smaller changes more visible
+        // Neutral (0%) = BASE_SIZE, positive grows more dramatically, negative shrinks more
+        const normalizedChange = (dailyChange + 5) / 10; // Map -5% to 0, +5% to 1
         const clampedChange = p.constrain(normalizedChange, 0, 1);
         
         asset.targetSize = p.lerp(MIN_BUBBLE_SIZE, MAX_BUBBLE_SIZE, clampedChange);
